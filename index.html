@@ -6,6 +6,200 @@
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
 </head>
 <body>
+هبوط قطرة
+قم بتبديل التراكبات السياقية لعرض قوائم الروابط والمزيد باستخدام البرنامج الإضافي المنسدل Bootstrap.
+
+الإعلانات عبر الكربوناحصل على 10 صور مجانية من Adobe Stock. ابدأ الآن.
+الإعلانات عبر الكربون
+ملخص
+القوائم المنسدلة هي تراكبات سياقية قابلة للتبديل لعرض قوائم الروابط والمزيد. لقد تم جعلها تفاعلية مع ملحق JavaScript الإضافي المضمن في القائمة المنسدلة Bootstrap. يتم تبديلهم عن طريق النقر وليس بالمرور ؛ هذا قرار تصميم مقصود .
+
+القوائم المنسدلة مبنية على مكتبة طرف ثالث ، Popper ، والتي توفر تحديد المواقع الديناميكي واكتشاف منفذ العرض. تأكد من تضمين popper.min.js قبل JavaScript في Bootstrap أو استخدم bootstrap.bundle.min.js/ bootstrap.bundle.jsالذي يحتوي على Popper. لا يتم استخدام Popper لوضع القوائم المنسدلة في أشرطة التنقل على الرغم من أن تحديد المواقع الديناميكي غير مطلوب.
+
+إمكانية الوصول
+يحدد معيار WAI ARIArole="menu" عنصر واجهة مستخدم فعليًا ، ولكن هذا خاص بالقوائم الشبيهة بالتطبيق والتي تؤدي إلى إجراءات أو وظائف. يمكن أن تحتوي قوائم ARIA فقط على عناصر القائمة وعناصر قائمة مربع الاختيار وعناصر قائمة زر الاختيار ومجموعات أزرار الاختيار والقوائم الفرعية.
+
+من ناحية أخرى ، تم تصميم القوائم المنسدلة لـ Bootstrap لتكون عامة وقابلة للتطبيق على مجموعة متنوعة من المواقف وهياكل العلامات. على سبيل المثال ، من الممكن إنشاء قوائم منسدلة تحتوي على مدخلات إضافية وعناصر تحكم في النموذج ، مثل حقول البحث أو نماذج تسجيل الدخول. لهذا السبب ، لا يتوقع Bootstrap (ولا يضيف تلقائيًا) أيًا من السمات roleوالسمات المطلوبة لقوائم ARIAaria- الحقيقية . سيتعين على المؤلفين تضمين هذه السمات الأكثر تحديدًا بأنفسهم.
+
+ومع ذلك ، يضيف Bootstrap دعمًا مضمنًا لمعظم تفاعلات قائمة لوحة المفاتيح القياسية ، مثل القدرة على التنقل عبر .dropdown-itemالعناصر الفردية باستخدام مفاتيح المؤشر وإغلاق القائمة باستخدام المفتاح Esc.
+
+أمثلة
+قم بلف مفتاح تبديل القائمة المنسدلة (الزر أو الارتباط الخاص بك) والقائمة المنسدلة بداخله .dropdown، أو بداخله أي عنصر آخر يتم الإعلان عنه position: relative;. من الناحية المثالية ، يجب أن تستخدم <button>عنصرًا كمشغل القائمة المنسدلة ، لكن المكون الإضافي سيعمل مع <a>العناصر أيضًا. تستخدم الأمثلة الموضحة هنا <ul>العناصر الدلالية عند الاقتضاء ، لكن الترميز المخصص مدعوم.
+
+زر واحد
+يمكن تحويل أي منفردة .btnإلى قائمة منسدلة للتبديل مع بعض التغييرات في الترميز. إليك كيفية وضعها للعمل مع <button>العناصر:
+
+لغة البرمجة
+
+
+<div class="dropdown">
+  <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+    Dropdown button
+  </button>
+  <ul class="dropdown-menu">
+    <li><a class="dropdown-item" href="#">Action</a></li>
+    <li><a class="dropdown-item" href="#">Another action</a></li>
+    <li><a class="dropdown-item" href="#">Something else here</a></li>
+  </ul>
+</div>
+بينما <button>هو عنصر التحكم الموصى به لتبديل القائمة المنسدلة ، فقد تكون هناك مواقف يتعين عليك فيها استخدام <a>عنصر. إذا قمت بذلك ، فإننا نوصي بإضافة role="button"سمة لنقل غرض التحكم بشكل مناسب للتقنيات المساعدة مثل برامج قراءة الشاشة.
+
+لغة البرمجة
+
+
+<div class="dropdown">
+  <a class="btn btn-secondary dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+    Dropdown link
+  </a>
+
+  <ul class="dropdown-menu">
+    <li><a class="dropdown-item" href="#">Action</a></li>
+    <li><a class="dropdown-item" href="#">Another action</a></li>
+    <li><a class="dropdown-item" href="#">Something else here</a></li>
+  </ul>
+</div>
+أفضل جزء هو أنه يمكنك القيام بذلك باستخدام أي متغير للأزرار أيضًا:
+
+ 
+ 
+ 
+ 
+ 
+<!-- Example single danger button -->
+<div class="btn-group">
+  <button type="button" class="btn btn-danger dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+    Action
+  </button>
+  <ul class="dropdown-menu">
+    <li><a class="dropdown-item" href="#">Action</a></li>
+    <li><a class="dropdown-item" href="#">Another action</a></li>
+    <li><a class="dropdown-item" href="#">Something else here</a></li>
+    <li><hr class="dropdown-divider"></li>
+    <li><a class="dropdown-item" href="#">Separated link</a></li>
+  </ul>
+</div>
+زر الانقسام
+وبالمثل ، قم بإنشاء قوائم منسدلة لأزرار الانقسام بنفس الترميز تقريبًا مثل القوائم المنسدلة ذات الزر الفردي ، ولكن مع إضافة .dropdown-toggle-splitالتباعد المناسب حول علامة الإقحام المنسدلة.
+
+نستخدم هذه الفئة الإضافية لتقليل الأفقي paddingعلى جانبي علامة الإقحام بنسبة 25٪ وإزالة ما margin-leftتم إضافته من أجل القوائم المنسدلة للأزرار العادية. هذه التغييرات الإضافية تحافظ على مركز علامة الإقحام في زر الانقسام وتوفر مساحة ضغط أكثر ملاءمة بجوار الزر الرئيسي.
+
+ 
+ 
+ 
+ 
+ 
+<!-- Example split danger button -->
+<div class="btn-group">
+  <button type="button" class="btn btn-danger">Action</button>
+  <button type="button" class="btn btn-danger dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
+    <span class="visually-hidden">Toggle Dropdown</span>
+  </button>
+  <ul class="dropdown-menu">
+    <li><a class="dropdown-item" href="#">Action</a></li>
+    <li><a class="dropdown-item" href="#">Another action</a></li>
+    <li><a class="dropdown-item" href="#">Something else here</a></li>
+    <li><hr class="dropdown-divider"></li>
+    <li><a class="dropdown-item" href="#">Separated link</a></li>
+  </ul>
+</div>
+تحجيم
+تعمل القوائم المنسدلة للأزرار مع الأزرار من جميع الأحجام ، بما في ذلك الأزرار المنسدلة الافتراضية والمقسمة.
+
+ 
+<!-- Large button groups (default and split) -->
+<div class="btn-group">
+  <button class="btn btn-secondary btn-lg dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+    Large button
+  </button>
+  <ul class="dropdown-menu">
+    ...
+  </ul>
+</div>
+<div class="btn-group">
+  <button class="btn btn-secondary btn-lg" type="button">
+    Large split button
+  </button>
+  <button type="button" class="btn btn-lg btn-secondary dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
+    <span class="visually-hidden">Toggle Dropdown</span>
+  </button>
+  <ul class="dropdown-menu">
+    ...
+  </ul>
+</div>
+ 
+فعل
+عمل آخر
+شيء آخر هنا
+رابط منفصل
+<div class="btn-group">
+  <button class="btn btn-secondary btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+    Small button
+  </button>
+  <ul class="dropdown-menu">
+    ...
+  </ul>
+</div>
+<div class="btn-group">
+  <button class="btn btn-secondary btn-sm" type="button">
+    Small split button
+  </button>
+  <button type="button" class="btn btn-sm btn-secondary dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
+    <span class="visually-hidden">Toggle Dropdown</span>
+  </button>
+  <ul class="dropdown-menu">
+    ...
+  </ul>
+</div>
+القوائم المنسدلة المظلمة
+موقوف في v5.3.0
+يمكنك الاشتراك في القوائم المنسدلة الأكثر قتامة لمطابقة شريط التنقل المظلم أو النمط المخصص عن طريق الإضافة .dropdown-menu-darkإلى القائمة الموجودة .dropdown-menu. لا توجد تغييرات مطلوبة لعناصر القائمة المنسدلة.
+
+انتباه! تم إهمال المتغيرات الداكنة للمكونات في الإصدار 5.3.0 مع إدخال أوضاع الألوان. بدلاً من الإضافة .dropdown-menu-dark، قم بتعيين data-bs-theme="dark"العنصر الجذر ، أو الغلاف الرئيسي ، أو المكون نفسه.
+
+لغة البرمجة
+
+
+<div class="dropdown">
+  <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+    Dropdown button
+  </button>
+  <ul class="dropdown-menu dropdown-menu-dark">
+    <li><a class="dropdown-item active" href="#">Action</a></li>
+    <li><a class="dropdown-item" href="#">Another action</a></li>
+    <li><a class="dropdown-item" href="#">Something else here</a></li>
+    <li><hr class="dropdown-divider"></li>
+    <li><a class="dropdown-item" href="#">Separated link</a></li>
+  </ul>
+</div>
+واستخدامه في navbar:
+
+نافبار
+
+لغة البرمجة
+
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">Navbar</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDarkDropdown" aria-controls="navbarNavDarkDropdown" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavDarkDropdown">
+      <ul class="navbar-nav">
+        <li class="nav-item dropdown">
+          <button class="btn btn-dark dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+            Dropdown
+          </button>
+          <ul class="dropdown-menu dropdown-menu-dark">
+            <li><a class="dropdown-item" href="#">الفيروسات</a></li>
+            <li><a class="dropdown-item" href="#">Another action</a></li>
+            <li><a class="dropdown-item" href="#">Something else here</a></li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
 <ul class="nav nav-pills nav-fill gap-2 p-1 small bg-primary rounded-5 shadow-sm" id="pillNav2" role="tablist" style="--bs-nav-link-color: var(--bs-white); --bs-nav-pills-link-active-color: var(--bs-primary); --bs-nav-pills-link-active-bg: var(--bs-white);">
   <li class="nav-item" role="presentation">
     <button class="nav-link active rounded-5" id="home-tab2" data-bs-toggle="tab" type="button" role="tab" aria-selected="true">Home</button>
